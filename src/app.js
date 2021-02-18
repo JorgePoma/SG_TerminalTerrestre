@@ -58,6 +58,7 @@ app.use(require('./routes/user.routes'));
 app.use(require('./routes/opciones.routes'));
 app.use(require('./routes/turno.routes'));
 app.use(require('./routes/boleto.routes'));
+app.use(require('./routes/ruta.routes'));
 
 module.exports=app;
 

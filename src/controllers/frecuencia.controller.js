@@ -41,6 +41,7 @@ export const CuentaAdmin = async (req, res) => {
  * @param {*} res - rederizamos la ventana de administracion de frecuencias
  */
 export const getFrecuenciaPrincipal = async (req, res) => {
+   rutas.length = 0;
    const Frecuencias = await Frecuencia.find({}).lean();
    const Rutas = await Ruta.find({}).lean();
    res.render('frecuencias/frecuencia', { Frecuencias, Rutas });
@@ -93,7 +94,7 @@ export const createFrecuencia = async (req, res) => {
          rutas
       });
       await newFrecuencia.save();
-      rutas.splice();
+      rutas.length = 0;
       console.log(newFrecuencia)
       res.redirect('/guardarFrecuencia/add')
    }
@@ -166,6 +167,7 @@ export const editarFrecuenciaById = async (req, res) => {
          rutas
       });
       console.log(frecuencia);
+      rutas.length = 0;
       res.redirect('/guardarFrecuencia/add');
    }
 }
@@ -179,6 +181,7 @@ export const editarFrecuenciaById = async (req, res) => {
 export const asignarRutas = async (req, res) => {
    const ruta = await Ruta.findById(req.params.id); 
    rutas.push(ruta);
+   res.log(rutas);
 }
 
 /**
